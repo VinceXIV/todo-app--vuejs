@@ -1,14 +1,17 @@
 <template>
   <BackGround theme='light'/>
+  <ToDo />
 </template>
 
 <script>
 import BackGround from './components/BackGround.vue'
+import ToDo from './components/ToDo.vue';
 
 export default {
   name: 'App',
   components: {
-    BackGround
+    BackGround,
+    ToDo
   }
 }
 </script>
