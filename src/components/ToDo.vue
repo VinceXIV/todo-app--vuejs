@@ -1,12 +1,25 @@
 <template>
     <div class="container">
-        <div class="todo"></div>
+        <div class="todo">
+            <TodoHeader :theme="theme"/>
+            <TodoSearchBar :theme="theme"/>
+        </div>
     </div>
 </template>
 
 <script>
+    import TodoHeader from './TodoHeader.vue';
+    import TodoSearchBar from './TodoSearchBar.vue';
+
     export default {
-        name: 'ToDo'
+        name: 'ToDo',
+        components: {
+            TodoHeader,
+            TodoSearchBar
+        },
+        props: {
+            theme: String
+        }
     }
 </script>
 
@@ -26,6 +39,9 @@
         margin: auto;
         height: 90vh;
         width: calc(min(480px, 80vw));
-        background-color: red;
+        font-family: var(--primary-font-family);
+        font-size: var(--primary-font-size);
+        font-weight: var(--font-weight-bold);
+        /* background-color: red; */
     }
 </style>

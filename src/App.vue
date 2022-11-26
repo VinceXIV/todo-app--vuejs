@@ -1,6 +1,6 @@
 <template>
   <BackGround theme='light'/>
-  <ToDo />
+  <ToDo theme='light'/>
 </template>
 
 <script>
@@ -36,9 +36,15 @@ export default {
   --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
 
   /* TYPOGRAPHY  */
-  font-size: 19px;
-  font-family: 'Rubik', sans-serif;
+  --primary-font-size: 19px;
+  --primary-font-family: 'Rubik', sans-serif;
   --font-weight-light: 400;
   --font-weight-bold: 700;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 </style>
