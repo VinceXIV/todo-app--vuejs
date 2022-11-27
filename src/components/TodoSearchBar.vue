@@ -1,8 +1,11 @@
 <template>
     <form>
         <div id="input-field" :class="theme">
-            <div id="circular-div" :class="theme"></div>
+            <div class="check-mark">
+                <div class="circular-div" :class="theme"></div>
+            </div>
             <input type="text" name="new-todo" id="new-todo" :class="theme">
+            <div class="cross-dummy"></div>
         </div>
     </form>
 </template>
@@ -32,22 +35,37 @@
         box-shadow: 0 0 1rem -0.5rem var(--very-dark-grayish-blue);
     }
 
-    form input {
+    form input#new-todo {
         position: relative;
-        box-sizing:content-box;
-        width: 100%;
-        padding: 0.7rem;
+        box-sizing: content-box;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
         outline: none;
         border: none;
         font-weight: var(--font-weight-light);
         font-size: var(--primary-font-size);
-        border-radius: 0.2rem;
+        width: calc(min(360px, 760vw));
     }
 
-    form #circular-div {
+    .circular-div {
         border: 0.1rem var(--very-dark-grayish-blue) solid;
         border-radius: 100%;
         padding: 0.4rem;
-        margin: 0.6rem;
+    }
+
+    .check-mark {
+        display: grid;
+        place-items: center;
+        width: calc(min(60px, 10vw));
+        height: 2.6rem;
+    }
+
+    /* There won't be a cross like the todo list */
+    /* only doing this to for uniformity with the list */
+    .cross-dummy {
+        display: grid;
+        place-items: center;
+        width: calc(min(60px, 10vw));
+        height: 2.6rem;
     }
 </style>

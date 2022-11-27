@@ -14,7 +14,6 @@
                 </div>
                 <p class="todo-text" :class="theme">10 minutes meditation</p>
                 <div class="cross"></div>
-
             </li>
             <li :class="theme" class="todo-item item-other">
                 <div class="check-mark">
@@ -84,7 +83,6 @@
     .todo-text {
         position: relative;
         box-sizing: content-box;
-        width: 100%;
         padding-top: 0.7rem;
         padding-bottom: 0.7rem;
         outline: none;
