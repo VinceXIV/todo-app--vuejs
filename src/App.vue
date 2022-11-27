@@ -42,6 +42,9 @@ export default {
   --primary-font-family: 'Rubik', sans-serif;
   --font-weight-light: 400;
   --font-weight-bold: 700;
+
+
+  --check-background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 }
 
 * {

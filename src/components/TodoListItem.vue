@@ -1,9 +1,13 @@
 <template>
-    <li :class="theme" class="todo-item item-first">
+    <li :class="[theme, `item-${task.id ==1? 'first' : 'not-first'}`]" class="todo-item">
         <div class="check-mark">
-            <div class="circular-div" :class="theme"></div>
+            <div class="circular-div" :class="[theme, task.status]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" :class="task.status">
+                    <path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6" />
+                </svg>
+            </div>
         </div>
-        <p class="todo-text" :class="theme">{{task.name}}</p>
+        <p class="todo-text" :class="[theme, task.status]">{{task.name}}</p>
         <div class="cross">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" :class="mode">
                 <path fill="#494C6B" fill-rule="evenodd"
@@ -25,7 +29,7 @@
 </script>
 
 <style scoped>
-    .dark {
+.dark {
         background-color: var(--very-dark-desaturated-blue);
         color: var(--very-light-gray)
     }
@@ -45,6 +49,10 @@
         align-items: center;
     }
 
+    .todo-item:hover {
+        cursor: pointer;
+    }
+
     .todo-text {
         position: relative;
         box-sizing: content-box;
@@ -59,8 +67,16 @@
 
     .circular-div {
         border: 0.1rem var(--very-dark-grayish-blue) solid;
-        border-radius: 100%;
-        padding: 0.4rem;
+        border-radius: 50%;
+        width: 1rem;
+        height: 1rem;
+        /* padding: 0.4rem; */
+        display: grid;
+        place-items: center;
+    }
+
+    .circular-div.completed {
+        background: var(--check-background);
     }
 
     .check-mark {
@@ -68,6 +84,18 @@
         place-items: center;
         width: calc(min(60px, 10vw));
         height: 2.6rem;
+    }
+
+    .check-mark svg.completed {
+        display: block;
+    }
+
+    .check-mark svg.active {
+        display: none;
+    }
+
+    .circular-div:hover{
+        border-color: var(--check-background);
     }
 
     .cross {
@@ -80,14 +108,9 @@
     .item-first {
         border-top-left-radius: 0.3rem;
         border-top-right-radius: 0.3rem;
-
     }
 
-    .item-other {
-        border-top: 0.005rem solid var(--very-dark-grayish-blue);
-    }
-
-    .item-other {
+    .item-not-first {
         border-top: 0.005rem solid var(--very-dark-grayish-blue);
     }
 
@@ -105,5 +128,9 @@
 
     .desktop {
         display: none;
+    }
+
+    .completed {
+        text-decoration: line-through;
     }
 </style>
