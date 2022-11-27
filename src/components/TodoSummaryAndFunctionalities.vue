@@ -7,7 +7,7 @@
                 <p :class="currentlyShowing.active" @click="$emit('make-active', 'active')">Active</p>
                 <p :class="currentlyShowing.completed" @click="$emit('make-active', 'completed')">Completed</p>
             </div>
-            <p class="clear-todos" :class="mode">Clear Completed</p>
+            <p class="clear-todos" :class="mode" @click="$emit('clear-completed-todos')">Clear Completed</p>
         </div>
     </div>
 </template>

@@ -15,7 +15,8 @@
                     :mode="mode"
                     :remainingItems="this.remainingItems"
                     :currentlyShowing="currentlyShowing"
-                    @make-active="onMakeActive"/>
+                    @make-active="onMakeActive"
+                    @clear-completed-todos="onClearCompleted"/>
             </div>
             <FilterTodosMobileView
                 :theme="theme"
@@ -65,6 +66,10 @@
             onMakeActive: function(activeItem){
                 this.updateColor(activeItem)
                 this.updateDisplayedItems(activeItem)
+            },
+            onClearCompleted: function(){
+                this.allTodoTasks = this.allTodoTasks.filter(task => task.status != "completed")
+                this.todoTasks = this.allTodoTasks
             },
             getNoOfActiveTodoTasks: function () {
                 const activeTodos = this.todoTasks.reduce((acc, task) => {
