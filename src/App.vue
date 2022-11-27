@@ -1,6 +1,6 @@
 <template>
-  <BackGround theme='dark'/>
-  <ToDo theme='dark'/>
+  <BackGround theme='dark' mode='desktop'/>
+  <ToDo theme='dark' mode='desktop'/>
 </template>
 
 <script>
@@ -36,7 +36,8 @@ export default {
   --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
 
   /* TYPOGRAPHY  */
-  --primary-font-size: 19px;
+  --font-size-set: 19px;
+  --font-size-normal: 1rem;
   --primary-font-family: 'Rubik', sans-serif;
   --font-weight-light: 400;
   --font-weight-bold: 700;
@@ -46,5 +47,7 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-weight: var(--font-weight-light);
+  font-family: var(--primary-font-family);
 }
 </style>
