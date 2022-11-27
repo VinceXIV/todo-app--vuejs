@@ -2,7 +2,7 @@
     <div>
         <ul id="todo-list" :class="theme">
             <TodoListItem
-                v-for="task in showTasks"
+                v-for="task in todoTasks"
                 :key="task.id"
                 :task="task"
                 :theme="theme"
@@ -27,25 +27,15 @@
         },
         methods: {
             onToggleTodoState: function(todoTask){
-                this.showTasks = this.showTasks.map(task => {
-                    if(task.id == todoTask.id){
-                        const newStatus = task.status == "active"? "completed" : "active"
-                        task.status = newStatus
-                    }
-                    return task;
-                })
+                this.$emit('mark-completed', todoTask)
             },
             onRemoveTodoItem: function(deletedTask){
                 if(deletedTask.status === "completed"){
-                    this.showTasks = this.showTasks.filter(task => task.id !== deletedTask.id)
+                    this.$emit('delete-task', deletedTask)
                 }
             }
         },
-        data() {
-            return {
-                showTasks: this.todoTasks
-            }
-        }      
+        emits: ['mark-completed', 'delete-task']    
     }
 </script>
 

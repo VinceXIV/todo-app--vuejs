@@ -4,7 +4,12 @@
             <TodoHeader :theme="theme"/>
             <TodoSearchBar :theme="theme"/>
             <div class="main-body" :class="[theme, mode]">
-                <TodoList :theme="theme" :mode="mode" :todoTasks="this.todoTasks"/>
+                <TodoList
+                    :theme="theme"
+                    :mode="mode"
+                    :todoTasks="this.todoTasks"
+                    @mark-completed="onCompleted"
+                    @delete-task="onDelete"/>
                 <TodoSummaryAndFunctionalities :theme="theme" :mode="mode"/>
             </div>
             <FilterTodosMobileView :theme="theme" :mode="mode" />
@@ -31,6 +36,22 @@
         props: {
             theme: String,
             mode: String
+        },
+        methods: {
+        onCompleted: function (todoTask) {
+            this.todoTasks = this.todoTasks.map(task => {
+                if (task.id == todoTask.id) {
+                    const newStatus = task.status == "active" ? "completed" : "active"
+                    task.status = newStatus
+                }
+                return task;
+            })
+        },
+        onDelete: function (deletedTask) {
+            this.todoTasks = this.todoTasks.filter(task => {
+                return deletedTask.id != task.id
+            })
+        }
         },
         data(){
             return {
