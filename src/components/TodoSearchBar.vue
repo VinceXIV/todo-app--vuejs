@@ -40,12 +40,13 @@
         border: none;
         font-weight: var(--font-weight-light);
         font-size: var(--primary-font-size);
+        border-radius: 0.2rem;
     }
 
     form #circular-div {
         border: 0.1rem var(--very-dark-grayish-blue) solid;
         border-radius: 100%;
-        padding: 0.8rem;
-        margin: 1rem;
+        padding: 0.4rem;
+        margin: 0.6rem;
     }
 </style>
