@@ -1,7 +1,14 @@
 <template>
     <div>
         <ul id="todo-list" :class="theme">
-            <TodoListItem v-for="task in todoTasks" :key="task.id" :task="task" :theme="theme" :mode="mode"/>
+            <TodoListItem
+                v-for="task in showTasks"
+                :key="task.id"
+                :task="task"
+                :theme="theme"
+                :mode="mode"
+                @toggle-todo-state="onToggleTodoState"
+                @remove-todo-item="onRemoveTodoItem"/>
         </ul>
     </div>
 </template>
@@ -11,23 +18,34 @@
     export default {
         name: 'TodoList',
         props: {
-            todoTasks: {
-                type: Array,
-                default: () => [
-                    {id: 1, name: "Complete online javascript course", status: "completed"},
-                    {id: 2, name: "Jog around the park 3x", status: "active"},
-                    {id: 3, name: "10 minutes meditation", status: "active"},
-                    {id: 4, name: "Read for 1 hour", status: "active"},
-                    {id: 5, name: "Pick up groceries", status: "active"},
-                    {id: 6, name: "Complete Todo App on Frontend Mentor", status: "active"}
-                ]
-            },
+            todoTasks: Object,
             theme: String,
             mode: String
         },
         components: {
             TodoListItem
-        }        
+        },
+        methods: {
+            onToggleTodoState: function(todoTask){
+                this.showTasks = this.showTasks.map(task => {
+                    if(task.id == todoTask.id){
+                        const newStatus = task.status == "active"? "completed" : "active"
+                        task.status = newStatus
+                    }
+                    return task;
+                })
+            },
+            onRemoveTodoItem: function(deletedTask){
+                if(deletedTask.status === "completed"){
+                    this.showTasks = this.showTasks.filter(task => task.id !== deletedTask.id)
+                }
+            }
+        },
+        data() {
+            return {
+                showTasks: this.todoTasks
+            }
+        }      
     }
 </script>
 

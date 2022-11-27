@@ -4,7 +4,7 @@
             <TodoHeader :theme="theme"/>
             <TodoSearchBar :theme="theme"/>
             <div class="main-body" :class="[theme, mode]">
-                <TodoList :theme="theme" :mode="mode"/>
+                <TodoList :theme="theme" :mode="mode" :todoTasks="this.todoTasks"/>
                 <TodoSummaryAndFunctionalities :theme="theme" :mode="mode"/>
             </div>
             <FilterTodosMobileView :theme="theme" :mode="mode" />
@@ -31,6 +31,18 @@
         props: {
             theme: String,
             mode: String
+        },
+        data(){
+            return {
+                todoTasks: [
+                    { id: 1, name: "Complete online javascript course", status: "completed" },
+                    { id: 2, name: "Jog around the park 3x", status: "active" },
+                    { id: 3, name: "10 minutes meditation", status: "active" },
+                    { id: 4, name: "Read for 1 hour", status: "active" },
+                    { id: 5, name: "Pick up groceries", status: "active" },
+                    { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
+                ]
+            }
         }
     }
 </script>
