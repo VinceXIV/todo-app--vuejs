@@ -3,9 +3,9 @@
         <div class="bottom-items">
             <p class="remaining-todos" :class="mode">{{remainingItems}} items left</p>
             <div class="filter-todos-desktop-view" :class="mode">
-                <p>All</p>
-                <p>Active</p>
-                <p>Completed</p>
+                <p :class="currentlyShowing.all" @click="$emit('make-active', 'all')">All</p>
+                <p :class="currentlyShowing.active" @click="$emit('make-active', 'active')">Active</p>
+                <p :class="currentlyShowing.completed" @click="$emit('make-active', 'completed')">Completed</p>
             </div>
             <p class="clear-todos" :class="mode">Clear Completed</p>
         </div>
@@ -15,7 +15,7 @@
 <script>
     export default {
         name: 'TodoSummaryAndFunctionalities',
-        props: ["theme", "mode", "remainingItems"]
+        props: ["theme", "mode", "remainingItems", "currentlyShowing"]
     }
 </script>
 
@@ -81,5 +81,9 @@
 
     .remaining-todos:hover, .filter-todos-desktop-view:hover, .clear-todos {
         cursor: pointer;
+    }
+
+    .filter-todos-desktop-view .active {
+        color: var(--bright-blue)
     }
 </style>

@@ -10,9 +10,18 @@
                     :todoTasks="this.todoTasks"
                     @mark-completed="onCompleted"
                     @delete-task="onDelete"/>
-                <TodoSummaryAndFunctionalities :theme="theme" :mode="mode" :remainingItems="this.remainingItems"/>
+                <TodoSummaryAndFunctionalities
+                    :theme="theme"
+                    :mode="mode"
+                    :remainingItems="this.remainingItems"
+                    :currentlyShowing="currentlyShowing"
+                    @make-active="onMakeActive"/>
             </div>
-            <FilterTodosMobileView :theme="theme" :mode="mode" />
+            <FilterTodosMobileView
+                :theme="theme"
+                :mode="mode"
+                :currentlyShowing="currentlyShowing"
+                @make-active="onMakeActive"/>
         </div>
     </div>
 </template>
@@ -38,37 +47,64 @@
             mode: String
         },
         methods: {
-        onCompleted: function (todoTask) {
-            this.todoTasks = this.todoTasks.map(task => {
-                if (task.id == todoTask.id) {
-                    const newStatus = task.status == "active" ? "completed" : "active"
-                    task.status = newStatus
-                }
-                return task;
-            })
-            this.remainingItems = this.getNoOfActiveTodoTasks()
-            console.log(this.remainingItems)
-        },
-        onDelete: function (deletedTask) {
-            this.todoTasks = this.todoTasks.filter(task => {
-                return deletedTask.id != task.id
-            })
-        },
-        getNoOfActiveTodoTasks: function () {
-            const activeTodos = this.todoTasks.reduce((acc, task) => {
-                if (task.status == "active") {
-                    acc += 1
-                    return acc;
-                } else {
-                    return acc;
-                }
-            }, 0)
+            onCompleted: function (todoTask) {
+                this.todoTasks = this.todoTasks.map(task => {
+                    if (task.id == todoTask.id) {
+                        const newStatus = task.status == "active" ? "completed" : "active"
+                        task.status = newStatus
+                    }
+                    return task;
+                })
+                this.remainingItems = this.getNoOfActiveTodoTasks()
+            },
+            onDelete: function (deletedTask) {
+                this.todoTasks = this.todoTasks.filter(task => {
+                    return deletedTask.id != task.id
+                })
+            },
+            onMakeActive: function(activeItem){
+                this.updateColor(activeItem)
+                this.updateDisplayedItems(activeItem)
+            },
+            getNoOfActiveTodoTasks: function () {
+                const activeTodos = this.todoTasks.reduce((acc, task) => {
+                    if (task.status == "active") {
+                        acc += 1
+                        return acc;
+                    } else {
+                        return acc;
+                    }
+                }, 0)
 
-            return activeTodos;
-        }
+                return activeTodos;
+            },
+            updateColor: function(activeItem){
+                this.currentlyShowing = {
+                    all: activeItem == "all" ? "active" : "inactive",
+                    active: activeItem == "active" ? "active" : "inactive",
+                    completed: activeItem == "completed" ? "active" : "inactive"
+                }                
+            },
+            updateDisplayedItems: function(activeItem){
+                if(activeItem == "all"){
+                    this.todoTasks = this.allTodoTasks
+                }else if (activeItem == "active"){
+                    this.todoTasks = this.allTodoTasks.filter(task => task.status == "active")
+                } else if (activeItem == "completed") {
+                    this.todoTasks = this.allTodoTasks.filter(task => task.status == "completed")
+                }
+            }
         },
         data(){
             return {
+                allTodoTasks: [
+                    { id: 1, name: "Complete online javascript course", status: "completed" },
+                    { id: 2, name: "Jog around the park 3x", status: "active" },
+                    { id: 3, name: "10 minutes meditation", status: "active" },
+                    { id: 4, name: "Read for 1 hour", status: "active" },
+                    { id: 5, name: "Pick up groceries", status: "active" },
+                    { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
+                ],                
                 todoTasks: [
                     { id: 1, name: "Complete online javascript course", status: "completed" },
                     { id: 2, name: "Jog around the park 3x", status: "active" },
@@ -77,7 +113,12 @@
                     { id: 5, name: "Pick up groceries", status: "active" },
                     { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
                 ],
-                remainingItems: 0
+                remainingItems: 0,
+                currentlyShowing: {
+                    all: "active",
+                    active: "inactive",
+                    completed: "inactive"
+                }
             }
         },
         created(){

@@ -1,9 +1,9 @@
 <template>
     <div class="filter-todos-mobile-view" :class="[mode, theme]">
         <div class="actions">
-            <p>All</p>
-            <p>Active</p>
-            <p>Completed</p>
+            <p :class="currentlyShowing.all" @click="$emit('make-active', 'all')">All</p>
+            <p :class="currentlyShowing.active" @click="$emit('make-active', 'active')">Active</p>
+            <p :class="currentlyShowing.completed" @click="$emit('make-active', 'completed')">Completed</p>
         </div>
     </div>
 </template>
@@ -11,10 +11,7 @@
 <script>
     export default {
         name: 'FilterTodosMobileView',
-        props: {
-            mode: String,
-            theme: String
-        }
+        props: ["mode", "theme", "currentlyShowing"]
     }
 </script>
 
@@ -63,5 +60,9 @@ in a separate bar or same as the todo list */
         padding-bottom: 1rem;
         padding-left: 0.3rem;
         padding-right: 0.3rem;
+    }
+
+    .filter-todos-mobile-view .active {
+        color: var(--bright-blue);
     }
 </style>

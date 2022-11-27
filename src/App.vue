@@ -1,6 +1,6 @@
 <template>
-  <BackGround theme='light' mode='desktop'/>
-  <ToDo theme='light' mode='desktop'/>
+  <BackGround theme='dark' mode='desktop'/>
+  <ToDo theme='dark' mode='desktop'/>
 </template>
 
 <script>
@@ -45,6 +45,7 @@ export default {
 
 
   --check-background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --bright-blue: hsl(220, 98%, 61%)
 }
 
 * {
