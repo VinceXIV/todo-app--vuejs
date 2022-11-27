@@ -14,8 +14,8 @@
     }
 </script>
 
-<style>
-    .dark {
+<style scoped>
+.dark {
         background-color: var(--very-dark-desaturated-blue);
         color: var(--very-light-gray)
     }
@@ -28,14 +28,15 @@
     form #input-field {
         display: flex;
         align-items: center;
-        border-radius: 0.2rem;
+        border-radius: 0.3rem;
+        box-shadow: 0 0 1rem -0.5rem var(--very-dark-grayish-blue);
     }
 
     form input {
         position: relative;
         box-sizing:content-box;
         width: 100%;
-        padding: 0.5rem;
+        padding: 0.7rem;
         outline: none;
         border: none;
         font-weight: var(--font-weight-light);
