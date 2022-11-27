@@ -1,0 +1,105 @@
+<template>
+    <div>
+        <ul id="todo-list" :class="theme">
+            <li :class="theme" class="todo-item item-first">
+                <div class="circular-div" :class="theme"></div>
+                <p class="todo-text" :class="theme">Jog around the park 3x</p>
+            </li>
+            <li :class="theme" class="todo-item item-other">
+                <div class="circular-div" :class="theme"></div>
+                <p class="todo-text" :class="theme">10 minutes meditation</p>
+            </li>
+            <li :class="theme" class="todo-item item-other">
+                <div class="circular-div" :class="theme"></div>
+                <p class="todo-text" :class="theme">Pick up groceries</p>
+            </li>
+            <li :class="theme" class="todo-item item-other">
+                <div class="circular-div" :class="theme"></div>
+                <p class="todo-text" :class="theme">Complete Todo App on Frontend Mentor</p>
+            </li>
+            <li :class="theme" class="todo-item item-other">
+                <div class="circular-div" :class="theme"></div>
+                <p class="todo-text" :class="theme">Read for 1 hour</p>
+            </li>
+        </ul>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'TodoList',
+        props: {
+            todoTasks: {
+                type: Array,
+                default: () => ["Complete the KaziQuest code challenge", "Finish up on the Ruby project", "Read for 1 hour", "Pick up groceries"]
+            },
+            theme: String
+        }
+    }
+</script>
+
+<style scoped>
+.dark {
+        background-color: var(--very-dark-desaturated-blue);
+        color: var(--very-light-gray)
+    }
+
+    .light {
+        background-color: var(--very-light-gray);
+        color: var(--very-dark-blue)
+    }
+
+    #todo-list {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.2rem;
+    }
+
+    #todo-list.light {
+        box-shadow: 0 0 1rem -0.5rem var(--very-dark-grayish-blue);
+    }
+
+    .todo-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .todo-text {
+        position: relative;
+        box-sizing: content-box;
+        width: 100%;
+        padding: 0.7rem;
+        outline: none;
+        border: none;
+        font-weight: var(--font-weight-light);
+        font-size: var(--primary-font-size);
+        border-radius: 0.3rem;
+    }
+
+    .circular-div {
+        border: 0.1rem var(--very-dark-grayish-blue) solid;
+        border-radius: 100%;
+        padding: 0.4rem;
+        margin: 0.6rem;
+    }
+
+    .item-first {
+        border-top-left-radius: 0.3rem;
+        border-top-right-radius: 0.3rem;
+
+    }
+
+    .item-other {
+        /* border-bottom-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem; */
+        border-top: 0.005rem solid var(--very-dark-grayish-blue);
+    }
+
+    .item-other {
+        border-top: 0.005rem solid var(--very-dark-grayish-blue);
+    }
+
+    ul li {
+        list-style: none;
+    }
+</style>

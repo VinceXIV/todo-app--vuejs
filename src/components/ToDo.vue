@@ -3,6 +3,7 @@
         <div class="todo">
             <TodoHeader :theme="theme"/>
             <TodoSearchBar :theme="theme"/>
+            <TodoList :theme="theme"/>
         </div>
     </div>
 </template>
@@ -10,13 +11,15 @@
 <script>
     import TodoHeader from './TodoHeader.vue';
     import TodoSearchBar from './TodoSearchBar.vue';
+    import TodoList from './TodoList.vue';
 
     export default {
         name: 'ToDo',
         components: {
-            TodoHeader,
-            TodoSearchBar
-        },
+    TodoHeader,
+    TodoSearchBar,
+    TodoList
+},
         props: {
             theme: String
         }
