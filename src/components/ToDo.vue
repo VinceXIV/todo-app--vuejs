@@ -10,7 +10,7 @@
                     :todoTasks="this.todoTasks"
                     @mark-completed="onCompleted"
                     @delete-task="onDelete"/>
-                <TodoSummaryAndFunctionalities :theme="theme" :mode="mode"/>
+                <TodoSummaryAndFunctionalities :theme="theme" :mode="mode" :remainingItems="this.remainingItems"/>
             </div>
             <FilterTodosMobileView :theme="theme" :mode="mode" />
         </div>
@@ -46,11 +46,25 @@
                 }
                 return task;
             })
+            this.remainingItems = this.getNoOfActiveTodoTasks()
+            console.log(this.remainingItems)
         },
         onDelete: function (deletedTask) {
             this.todoTasks = this.todoTasks.filter(task => {
                 return deletedTask.id != task.id
             })
+        },
+        getNoOfActiveTodoTasks: function () {
+            const activeTodos = this.todoTasks.reduce((acc, task) => {
+                if (task.status == "active") {
+                    acc += 1
+                    return acc;
+                } else {
+                    return acc;
+                }
+            }, 0)
+
+            return activeTodos;
         }
         },
         data(){
@@ -62,8 +76,12 @@
                     { id: 4, name: "Read for 1 hour", status: "active" },
                     { id: 5, name: "Pick up groceries", status: "active" },
                     { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
-                ]
+                ],
+                remainingItems: 0
             }
+        },
+        created(){
+            this.remainingItems = this.getNoOfActiveTodoTasks()
         }
     }
 </script>

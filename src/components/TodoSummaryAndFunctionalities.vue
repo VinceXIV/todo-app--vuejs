@@ -1,7 +1,7 @@
 <template>
     <div class="bottom-items-container" :class="theme">
         <div class="bottom-items">
-            <p class="remaining-todos" :class="mode">5 items left</p>
+            <p class="remaining-todos" :class="mode">{{remainingItems}} items left</p>
             <div class="filter-todos-desktop-view" :class="mode">
                 <p>All</p>
                 <p>Active</p>
@@ -15,10 +15,7 @@
 <script>
     export default {
         name: 'TodoSummaryAndFunctionalities',
-        props: {
-            theme: String,
-            mode: String
-        }
+        props: ["theme", "mode", "remainingItems"]
     }
 </script>
 
