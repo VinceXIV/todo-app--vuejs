@@ -4,6 +4,7 @@
             <TodoHeader :theme="theme"/>
             <TodoSearchBar :theme="theme"/>
             <TodoList :theme="theme"/>
+            <TodoSummaryAndFunctionalities :theme="theme"/>
         </div>
     </div>
 </template>
@@ -12,14 +13,16 @@
     import TodoHeader from './TodoHeader.vue';
     import TodoSearchBar from './TodoSearchBar.vue';
     import TodoList from './TodoList.vue';
+    import TodoSummaryAndFunctionalities from './TodoSummaryAndFunctionalities.vue';
 
     export default {
         name: 'ToDo',
         components: {
-            TodoHeader,
-            TodoSearchBar,
-            TodoList
-        },
+    TodoHeader,
+    TodoSearchBar,
+    TodoList,
+    TodoSummaryAndFunctionalities
+},
         props: {
             theme: String
         }
