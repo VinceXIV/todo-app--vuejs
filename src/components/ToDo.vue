@@ -3,8 +3,10 @@
         <div class="todo">
             <TodoHeader :theme="theme"/>
             <TodoSearchBar :theme="theme"/>
-            <TodoList :theme="theme"/>
-            <TodoSummaryAndFunctionalities :theme="theme"/>
+            <div class="main-body" :class="theme">
+                <TodoList :theme="theme" :mode="mode"/>
+                <TodoSummaryAndFunctionalities :theme="theme" :mode="mode"/>
+            </div>
         </div>
     </div>
 </template>
@@ -24,13 +26,14 @@
     TodoSummaryAndFunctionalities
 },
         props: {
-            theme: String
+            theme: String,
+            mode: String
         }
     }
 </script>
 
 <style scoped>
-    .container {
+.container {
         position: absolute;
         left: 0;
         top: 0;
@@ -49,5 +52,9 @@
         font-size: var(--primary-font-size);
         font-weight: var(--font-weight-bold);
         /* background-color: red; */
+    }
+
+    .main-body.light {
+        box-shadow: 0 0 1rem -0.5rem var(--very-dark-grayish-blue);
     }
 </style>

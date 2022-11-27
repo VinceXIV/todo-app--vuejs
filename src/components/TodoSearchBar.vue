@@ -43,7 +43,7 @@
         outline: none;
         border: none;
         font-weight: var(--font-weight-light);
-        font-size: var(--primary-font-size);
+        font-size: var(--font-size-set);
         width: calc(min(360px, 80vw));
     }
 
