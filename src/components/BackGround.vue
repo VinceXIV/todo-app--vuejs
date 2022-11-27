@@ -9,15 +9,13 @@
 export default {
   name: 'BackGround',
   props: {
-    theme: {
-      type: String,
-      default: 'dark'
-    }
+    theme: String,
+    mode: String
   },
 
   data() {
     return {
-      image: require(`../assets/images/bg-desktop-${this.theme}.jpg`)
+      image: require(`../assets/images/bg-${this.mode}-${this.theme}.jpg`)
     }
   }
 }
