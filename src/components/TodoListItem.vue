@@ -9,7 +9,7 @@
         </div>
         <p class="todo-text" :class="[theme, task.status]">{{task.name}}</p>
         <div class="cross">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" :class="mode">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" :class="[mode, task.status]">
                 <path fill="#494C6B" fill-rule="evenodd"
                     d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
             </svg>
@@ -86,11 +86,11 @@
         height: 2.6rem;
     }
 
-    .check-mark svg.completed {
+    .check-mark svg.completed, .cross svg.completed {
         display: block;
     }
 
-    .check-mark svg.active {
+    .check-mark svg.active, .cross svg.active {
         display: none;
     }
 
@@ -116,10 +116,6 @@
 
     ul li {
         list-style: none;
-    }
-
-    .display-none {
-        display: none;
     }
 
     .mobile {
