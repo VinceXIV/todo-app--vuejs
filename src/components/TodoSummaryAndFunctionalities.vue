@@ -10,13 +10,6 @@
             <p class="clear-todos" :class="mode">Clear Completed</p>
         </div>
     </div>
-    <div class="filter-todos-mobile-view" :class="[mode, theme]">
-        <div class="actions">
-            <p>All</p>
-            <p>Active</p>
-            <p>Completed</p>
-        </div>
-    </div>
 </template>
 
 <script>
@@ -39,17 +32,23 @@
     }
     .bottom-items {
         display: flex;
-        font-size: 0.8rem;
         justify-content: space-between;
         border-bottom-left-radius: 0.3rem;
         border-bottom-right-radius: 0.3rem;
         width: calc(min(450px, 75vw));
     }
 
+    .bottom-items .mobile {
+        font-size: var(--font-size-set)
+    }
+
+    .bottom-items .desktop {
+        font-size: var(--font-size-small);
+    }
+
     .bottom-items .remaining-todos.desktop,
     .bottom-items .clear-todos.desktop {
         width: calc(min(135px, 22.5vw));
-        /* background-color: red; */
     }
 
     p {
@@ -70,36 +69,8 @@
     }
 
     .bottom-items-container.dark {
-        color: var(--very-light-gray);
+        color: var(--dark-grayish-blue);
         background-color: var(--very-dark-desaturated-blue);
-    }
-
-    .filter-todos-mobile-view.mobile {
-        display: flex;
-        justify-content: space-around;
-        border-radius: 0.3rem;
-        margin-top: 1rem;
-        font-size: 1rem;
-        font-weight: var(--font-weight-light);
-    }
-
-    /* Toggle between showing filtering (all, active and completed)
-    in a separate bar or same as the todo list */
-    .filter-todos-mobile-view.light {
-        color: var(--very-dark-blue);
-        background-color: var(--very-light-gray);
-    }
-    .filter-todos-mobile-view.dark {
-        color: var(--very-light-gray);
-        background-color: var(--very-dark-desaturated-blue);
-    }
-
-    .filter-todos-mobile-view .actions {
-        display: flex;
-    }
-
-    .filter-todos-mobile-view .actions p {
-        font-weight: var(--font-weight-bold);
     }
 
     .filter-todos-desktop-view.desktop {
@@ -109,14 +80,5 @@
 
     .filter-todos-desktop-view.mobile {
         display: none;
-    }
-
-    .filter-todos-mobile-view.desktop {
-        display: none;
-    }
-
-    .filter-todos-mobile-view.mobile {
-        display: flex;
-        justify-content: space-around;
     }
 </style>

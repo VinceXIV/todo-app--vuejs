@@ -1,12 +1,13 @@
 <template>
     <div class="container">
-        <div class="todo">
+        <div class="todo" :class="theme">
             <TodoHeader :theme="theme"/>
             <TodoSearchBar :theme="theme"/>
-            <div class="main-body" :class="theme">
+            <div class="main-body" :class="[theme, mode]">
                 <TodoList :theme="theme" :mode="mode"/>
                 <TodoSummaryAndFunctionalities :theme="theme" :mode="mode"/>
             </div>
+            <FilterTodosMobileView :theme="theme" :mode="mode" />
         </div>
     </div>
 </template>
@@ -16,6 +17,7 @@
     import TodoSearchBar from './TodoSearchBar.vue';
     import TodoList from './TodoList.vue';
     import TodoSummaryAndFunctionalities from './TodoSummaryAndFunctionalities.vue';
+    import FilterTodosMobileView from './FilterTodosMobileView.vue';
 
     export default {
         name: 'ToDo',
@@ -23,7 +25,8 @@
     TodoHeader,
     TodoSearchBar,
     TodoList,
-    TodoSummaryAndFunctionalities
+    TodoSummaryAndFunctionalities,
+    FilterTodosMobileView
 },
         props: {
             theme: String,
@@ -51,7 +54,6 @@
         font-family: var(--primary-font-family);
         font-size: var(--primary-font-size);
         font-weight: var(--font-weight-bold);
-        /* background-color: red; */
     }
 
     .main-body.light {

@@ -1,6 +1,6 @@
 <template>
-  <BackGround theme='dark' mode='desktop'/>
-  <ToDo theme='dark' mode='desktop'/>
+  <BackGround theme='dark' mode='mobile'/>
+  <ToDo theme='dark' mode='mobile'/>
 </template>
 
 <script>
@@ -38,6 +38,7 @@ export default {
   /* TYPOGRAPHY  */
   --font-size-set: 19px;
   --font-size-normal: 1rem;
+  --font-size-small: 0.8rem;
   --primary-font-family: 'Rubik', sans-serif;
   --font-weight-light: 400;
   --font-weight-bold: 700;
