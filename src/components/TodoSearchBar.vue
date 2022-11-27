@@ -44,7 +44,7 @@
         border: none;
         font-weight: var(--font-weight-light);
         font-size: var(--primary-font-size);
-        width: calc(min(360px, 760vw));
+        width: calc(min(360px, 80vw));
     }
 
     .circular-div {

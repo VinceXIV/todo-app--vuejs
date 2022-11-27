@@ -92,7 +92,6 @@
 
     #todo-list {
         margin-top: 1rem;
-        margin-bottom: 1rem;
         border-radius: 0.2rem;
     }
 
@@ -103,7 +102,6 @@
     .todo-item {
         display: flex;
         align-items: center;
-        /* background-color: green; */
     }
 
     .todo-text {
@@ -115,7 +113,7 @@
         border: none;
         font-weight: var(--font-weight-light);
         font-size: var(--primary-font-size);
-        width: calc(min(360px, 760vw));
+        width: calc(min(360px, 80vw));
     }
 
     .circular-div {
