@@ -2,24 +2,40 @@
     <div>
         <ul id="todo-list" :class="theme">
             <li :class="theme" class="todo-item item-first">
-                <div class="circular-div" :class="theme"></div>
+                <div class="check-mark">
+                    <div class="circular-div" :class="theme"></div>
+                </div>
                 <p class="todo-text" :class="theme">Jog around the park 3x</p>
+                <div class="cross"></div>
             </li>
             <li :class="theme" class="todo-item item-other">
-                <div class="circular-div" :class="theme"></div>
+                <div class="check-mark">
+                    <div class="circular-div" :class="theme"></div>
+                </div>
                 <p class="todo-text" :class="theme">10 minutes meditation</p>
+                <div class="cross"></div>
+
             </li>
             <li :class="theme" class="todo-item item-other">
-                <div class="circular-div" :class="theme"></div>
+                <div class="check-mark">
+                    <div class="circular-div" :class="theme"></div>
+                </div>
                 <p class="todo-text" :class="theme">Pick up groceries</p>
+                <div class="cross"></div>
             </li>
             <li :class="theme" class="todo-item item-other">
-                <div class="circular-div" :class="theme"></div>
+                <div class="check-mark">
+                    <div class="circular-div" :class="theme"></div>
+                </div>
                 <p class="todo-text" :class="theme">Complete Todo App on Frontend Mentor</p>
+                <div class="cross"></div>
             </li>
             <li :class="theme" class="todo-item item-other">
-                <div class="circular-div" :class="theme"></div>
+                <div class="check-mark">
+                    <div class="circular-div" :class="theme"></div>
+                </div>
                 <p class="todo-text" :class="theme">Read for 1 hour</p>
+                <div class="cross"></div>
             </li>
         </ul>
     </div>
@@ -62,25 +78,40 @@
     .todo-item {
         display: flex;
         align-items: center;
+        /* background-color: green; */
     }
 
     .todo-text {
         position: relative;
         box-sizing: content-box;
         width: 100%;
-        padding: 0.7rem;
+        padding-top: 0.7rem;
+        padding-bottom: 0.7rem;
         outline: none;
         border: none;
         font-weight: var(--font-weight-light);
         font-size: var(--primary-font-size);
-        border-radius: 0.3rem;
+        width: calc(min(360px, 760vw));
     }
 
     .circular-div {
         border: 0.1rem var(--very-dark-grayish-blue) solid;
         border-radius: 100%;
         padding: 0.4rem;
-        margin: 0.6rem;
+    }
+    
+    .check-mark {
+        display: grid;
+        place-items: center;
+        width: calc(min(60px, 10vw));
+        height: 2.6rem;
+    }
+
+    .cross {
+        display: grid;
+        place-items: center;
+        width: calc(min(60px, 10vw));
+        height: 2.6rem;
     }
 
     .item-first {

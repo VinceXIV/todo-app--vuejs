@@ -16,10 +16,10 @@
     export default {
         name: 'ToDo',
         components: {
-    TodoHeader,
-    TodoSearchBar,
-    TodoList
-},
+            TodoHeader,
+            TodoSearchBar,
+            TodoList
+        },
         props: {
             theme: String
         }
