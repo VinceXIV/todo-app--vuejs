@@ -6,35 +6,60 @@
                     <div class="circular-div" :class="theme"></div>
                 </div>
                 <p class="todo-text" :class="theme">Jog around the park 3x</p>
-                <div class="cross"></div>
+                <div class="cross">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="display-none">
+                        <path fill="#494C6B" fill-rule="evenodd"
+                            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
+                    </svg>
+                </div>
             </li>
             <li :class="theme" class="todo-item item-other">
                 <div class="check-mark">
                     <div class="circular-div" :class="theme"></div>
                 </div>
                 <p class="todo-text" :class="theme">10 minutes meditation</p>
-                <div class="cross"></div>
+                <div class="cross">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="display-none">
+                        <path fill="#494C6B" fill-rule="evenodd"
+                            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
+                    </svg>
+                </div>
             </li>
             <li :class="theme" class="todo-item item-other">
                 <div class="check-mark">
                     <div class="circular-div" :class="theme"></div>
                 </div>
                 <p class="todo-text" :class="theme">Pick up groceries</p>
-                <div class="cross"></div>
+                <div class="cross">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="display-none">
+                        <path fill="#494C6B" fill-rule="evenodd"
+                            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
+                    </svg>
+                </div>
             </li>
             <li :class="theme" class="todo-item item-other">
                 <div class="check-mark">
                     <div class="circular-div" :class="theme"></div>
                 </div>
                 <p class="todo-text" :class="theme">Complete Todo App on Frontend Mentor</p>
-                <div class="cross"></div>
+                <div class="cross">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="display-none">
+                        <path fill="#494C6B" fill-rule="evenodd"
+                            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
+                    </svg>
+                </div>
             </li>
             <li :class="theme" class="todo-item item-other">
                 <div class="check-mark">
                     <div class="circular-div" :class="theme"></div>
                 </div>
                 <p class="todo-text" :class="theme">Read for 1 hour</p>
-                <div class="cross"></div>
+                <div class="cross">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="display-none">
+                        <path fill="#494C6B" fill-rule="evenodd"
+                            d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
+                    </svg>
+                </div>
             </li>
         </ul>
     </div>
@@ -48,7 +73,8 @@
                 type: Array,
                 default: () => ["Complete the KaziQuest code challenge", "Finish up on the Ruby project", "Read for 1 hour", "Pick up groceries"]
             },
-            theme: String
+            theme: String,
+
         }
     }
 </script>
@@ -119,8 +145,6 @@
     }
 
     .item-other {
-        /* border-bottom-left-radius: 0.3rem;
-        border-bottom-right-radius: 0.3rem; */
         border-top: 0.005rem solid var(--very-dark-grayish-blue);
     }
 
@@ -130,5 +154,9 @@
 
     ul li {
         list-style: none;
+    }
+
+    .display-none {
+        display: none;
     }
 </style>
