@@ -81,4 +81,8 @@
     .filter-todos-desktop-view.mobile {
         display: none;
     }
+
+    .remaining-todos:hover, .filter-todos-desktop-view:hover, .clear-todos {
+        cursor: pointer;
+    }
 </style>

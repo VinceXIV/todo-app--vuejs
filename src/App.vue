@@ -1,6 +1,6 @@
 <template>
-  <BackGround theme='dark' mode='desktop'/>
-  <ToDo theme='dark' mode='desktop'/>
+  <BackGround theme='light' mode='desktop'/>
+  <ToDo theme='light' mode='desktop'/>
 </template>
 
 <script>
