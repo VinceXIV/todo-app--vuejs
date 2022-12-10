@@ -116,8 +116,12 @@
         display: block;
     }
 
-    li.item {
+    li.item.dark {
         border-bottom: 0.005rem solid var(--very-dark-grayish-blue);
+    }
+
+    li.item.light {
+        border-bottom: 0.005rem solid var(--light-grayish-blue);
     }
 
     .desktop {
