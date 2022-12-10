@@ -79,7 +79,7 @@
         display: none;
     }
 
-    .remaining-todos:hover, .filter-todos-desktop-view:hover, .clear-todos {
+    .filter-todos-desktop-view:hover, .clear-todos {
         cursor: pointer;
     }
 
