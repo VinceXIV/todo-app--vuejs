@@ -1,6 +1,6 @@
 <template>
-  <BackGround theme='dark' mode='desktop'/>
-  <ToDo theme='dark' mode='desktop'/>
+  <BackGround :theme="theme" mode='desktop'/>
+  <ToDo :theme="theme" mode='desktop' @toggleTheme="toggleTheme"/>
 </template>
 
 <script>
@@ -12,6 +12,18 @@ export default {
   components: {
     BackGround,
     ToDo
+  },
+
+  data(){
+    return {
+      theme: 'dark'
+    }
+  },
+
+  methods: {
+    toggleTheme: function(){
+      this.theme = this.theme == 'dark'? 'light' : 'dark'
+    }
   }
 }
 </script>

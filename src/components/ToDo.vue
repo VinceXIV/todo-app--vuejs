@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="todo" :class="theme">
-            <TodoHeader :theme="theme"/>
+            <TodoHeader :theme="theme" @toggleTheme="$emit('toggleTheme')"/>
             <TodoSearchBar :theme="theme"/>
             <div class="main-body" :class="[theme, mode]">
                 <TodoList

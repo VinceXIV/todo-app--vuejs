@@ -1,6 +1,9 @@
 <template>
-  <div class="container">
-    <img :src="image" alt="Mountain">
+  <div class="container" :class="[theme, mode]">
+    <img :src="imageDesktopDark" class="desktop dark" alt="Mountain">
+    <img :src="imageDesktopLight" class="desktop light" alt="Mountain">
+    <img :src="imageMobileDark" class="mobile dark" alt="Mountain">
+    <img :src="imageMobileLight" class="mobile light" alt="Mountain">
     <div id="bottom-div" :class="theme"></div>
   </div>
 </template>
@@ -15,7 +18,10 @@ export default {
 
   data() {
     return {
-      image: require(`../assets/images/bg-${this.mode}-${this.theme}.jpg`)
+      imageDesktopDark: require(`../assets/images/bg-desktop-dark.jpg`),
+      imageDesktopLight: require(`../assets/images/bg-desktop-light.jpg`),
+      imageMobileDark: require(`../assets/images/bg-mobile-dark.jpg`),
+      imageMobileLight: require(`../assets/images/bg-mobile-light.jpg`)
     }
   }
 }
@@ -49,5 +55,9 @@ export default {
 
   #bottom-div.light {
     background-color: var(--very-light-gray)
+  }
+
+  .dark .light, .light .dark, .desktop .mobile, .mobile .desktop {
+    display: none;
   }
 </style>
