@@ -1,6 +1,6 @@
 <template>
-  <BackGround :theme="theme" mode='desktop'/>
-  <ToDo :theme="theme" mode='desktop' @toggleTheme="toggleTheme"/>
+  <BackGround :theme="theme" :mode="mode"/>
+  <ToDo :theme="theme" :mode="mode" @toggleTheme="toggleTheme"/>
 </template>
 
 <script>
@@ -16,13 +16,23 @@ export default {
 
   data(){
     return {
-      theme: 'dark'
+      theme: 'dark',
+      mode: this.getMode()
     }
+  },
+  mounted() {
+    window.addEventListener('resize', this.getMode);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.getMode);
   },
 
   methods: {
     toggleTheme: function(){
       this.theme = this.theme == 'dark'? 'light' : 'dark'
+    },
+    getMode: function(){
+      this.mode = document.documentElement.clientWidth > 500? 'desktop': 'mobile'
     }
   }
 }
