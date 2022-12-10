@@ -52,6 +52,7 @@
                 this.todoTasks = this.todoTasks.map(task => {
                     if (task.id == todoTask.id) {
                         const newStatus = task.status == "active" ? "completed" : "active"
+                        this.allTodoTasks.find(aTask => aTask.id == task.id).status = newStatus
                         task.status = newStatus
                     }
                     return task;
@@ -62,12 +63,17 @@
                 this.todoTasks = this.todoTasks.filter(task => {
                     return deletedTask.id != task.id
                 })
+                this.allTodoTasks = this.allTodoTasks.filter(task => {
+                    return deletedTask.id != task.id
+                })
             },
             onAdd: function(newTodoName){
                 const newTodoId = this.todoTasks.reduce((a, b) => Math.max(a, b.id), -Infinity) + 1
                 const newTodoStatus = "active"
 
                 this.todoTasks = [...(this.todoTasks), {id: newTodoId, name: newTodoName, status: newTodoStatus}]
+                this.allTodoTasks = [...(this.allTodoTasks), { id: newTodoId, name: newTodoName, status: newTodoStatus }]
+                this.remainingItems = this.getNoOfActiveTodoTasks()
             },
             onMakeActive: function(activeItem){
                 this.updateColor(activeItem)
