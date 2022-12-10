@@ -23,7 +23,6 @@
 .bottom-items-container {
         display: flex;
         justify-content: space-around;
-        border-top: 0.005rem solid var(--very-dark-grayish-blue);
         border-bottom-left-radius: 0.3rem;
         border-bottom-right-radius: 0.3rem;
     }
