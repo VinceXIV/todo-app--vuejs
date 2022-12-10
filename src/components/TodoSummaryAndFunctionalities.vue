@@ -3,9 +3,9 @@
         <div class="bottom-items">
             <p class="remaining-todos" :class="mode">{{remainingItems}} items left</p>
             <div class="filter-todos-desktop-view" :class="mode">
-                <p :class="currentlyShowing.all" @click="$emit('make-active', 'all')">All</p>
-                <p :class="currentlyShowing.active" @click="$emit('make-active', 'active')">Active</p>
-                <p :class="currentlyShowing.completed" @click="$emit('make-active', 'completed')">Completed</p>
+                <p :class="currentlyShowing.all" class="all-items" @click="$emit('make-active', 'all')">All</p>
+                <p :class="currentlyShowing.active" class="active-items" @click="$emit('make-active', 'active')">Active</p>
+                <p :class="currentlyShowing.completed" class="completed-items" @click="$emit('make-active', 'completed')">Completed</p>
             </div>
             <p class="clear-todos" :class="mode" @click="$emit('clear-completed-todos')">Clear Completed</p>
         </div>
@@ -82,7 +82,35 @@
         cursor: pointer;
     }
 
-    .filter-todos-desktop-view .active {
-        color: var(--bright-blue)
+    .light .filter-todos-desktop-view .active, .dark .filter-todos-desktop-view .active {
+        color: var(--bright-blue);
+    }
+
+    .light .all-items,
+    .light .active-items,
+    .light .completed-items,
+    .light .clear-todos,
+    .light .remaining-todos {
+        color: var(--light-grayish-blue);
+    }
+
+    .all-items,
+    .active-items,
+    .completed-items{
+        font-weight: 600;
+    }
+
+    .light .all-items.inactive:hover,
+    .light .active-items.inactive:hover,
+    .light .completed-items.inactive:hover,
+    .light .clear-todos:hover {
+        color: var(--very-dark-blue);
+    }
+
+    .dark .all-items.inactive:hover,
+    .dark .active-items.inactive:hover,
+    .dark .completed-items.inactive:hover,
+    .dark .clear-todos:hover {
+        color: var(--very-light-gray);
     }
 </style>
