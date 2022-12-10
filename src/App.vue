@@ -21,10 +21,12 @@ export default {
     }
   },
   mounted() {
+    window.addEventListener('DOMContentLoaded', this.getMode)
     window.addEventListener('resize', this.getMode);
   },
   unmounted() {
     window.removeEventListener('resize', this.getMode);
+    window.removeEventListener('DOMContentLoaded', this.getMode)
   },
 
   methods: {
@@ -58,7 +60,7 @@ export default {
   --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
 
   /* TYPOGRAPHY  */
-  --font-size-set: 19px;
+  --font-size-set: 1rem;
   --font-size-normal: 1rem;
   --font-size-small: 0.8rem;
   --primary-font-family: 'Rubik', sans-serif;
