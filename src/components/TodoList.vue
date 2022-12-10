@@ -53,5 +53,6 @@
     #todo-list {
         margin-top: 1rem;
         border-radius: 0.2rem;
+        padding-top: 0.2rem;
     }
 </style>

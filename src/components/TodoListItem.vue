@@ -1,6 +1,6 @@
 <template>
     <li 
-        :class="[theme, `item-${task.id ==1? 'first' : 'not-first'}`]" class="todo-item">
+        :class="[theme, 'item']" class="todo-item">
         <div class="check-mark">
             <div class="circular-div" :class="[theme, task.status]" @click="$emit('toggle-todo-state', task)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" :class="task.status">
@@ -109,21 +109,16 @@
         height: 2.6rem;
     }
 
-    .item-first {
-        border-top-left-radius: 0.3rem;
-        border-top-right-radius: 0.3rem;
-    }
-
-    .item-not-first {
-        border-top: 0.005rem solid var(--very-dark-grayish-blue);
-    }
-
     ul li {
         list-style: none;
     }
 
     .mobile {
         display: block;
+    }
+
+    li.item {
+        border-bottom: 0.005rem solid var(--very-dark-grayish-blue);
     }
 
     .desktop {
