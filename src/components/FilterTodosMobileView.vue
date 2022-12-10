@@ -1,9 +1,9 @@
 <template>
     <div class="filter-todos-mobile-view" :class="[mode, theme]">
         <div class="actions">
-            <p :class="currentlyShowing.all" @click="$emit('make-active', 'all')">All</p>
-            <p :class="currentlyShowing.active" @click="$emit('make-active', 'active')">Active</p>
-            <p :class="currentlyShowing.completed" @click="$emit('make-active', 'completed')">Completed</p>
+            <p :class="currentlyShowing.all" class="all-items" @click="$emit('make-active', 'all')">All</p>
+            <p :class="currentlyShowing.active" class="active-items" @click="$emit('make-active', 'active')">Active</p>
+            <p :class="currentlyShowing.completed" class="completed-items" @click="$emit('make-active', 'completed')">Completed</p>
         </div>
     </div>
 </template>
@@ -63,6 +63,41 @@ in a separate bar or same as the todo list */
     }
 
     .filter-todos-mobile-view .active {
+        color: var(--bright-blue);
+    }
+
+    /* // */
+    .light .all-items,
+    .light .active-items,
+    .light .completed-items,
+    .light .clear-todos,
+    .light .remaining-todos {
+        color: var(--light-grayish-blue);
+    }
+    
+    .light .all-items.inactive:hover,
+    .light .active-items.inactive:hover,
+    .light .completed-items.inactive:hover,
+    .light .clear-todos:hover {
+        color: var(--very-dark-blue);
+    }
+
+    .dark .all-items.inactive,
+    .dark .active-items.inactive,
+    .dark .completed-items.inactive,
+    .dark .clear-todos {
+        color: var(--dark-grayish-blue);
+    }
+
+    .dark .all-items.inactive:hover,
+    .dark .active-items.inactive:hover,
+    .dark .completed-items.inactive:hover,
+    .dark .clear-todos:hover {
+        color: var(--very-light-gray);
+    }
+
+    .light .filter-todos-mobile-view .active,
+    .dark .filter-todos-mobile-view .active {
         color: var(--bright-blue);
     }
 </style>
