@@ -5,6 +5,7 @@
     <img :src="imageMobileDark" class="mobile dark" alt="Mountain">
     <img :src="imageMobileLight" class="mobile light" alt="Mountain">
     <div id="bottom-div" :class="theme"></div>
+    <p :class="[theme, mode]">Drag and drop to reorder list</p>
   </div>
 </template>
 
@@ -59,5 +60,31 @@ export default {
 
   .dark .light, .light .dark, .desktop .mobile, .mobile .desktop {
     display: none;
+  }
+
+  .container p {
+    position: absolute;
+    width: calc(min(480px, 80vw));
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .container p.mobile {
+    bottom: 2rem;
+  }
+
+  .container p.desktop {
+    bottom: 3.5rem;
+  }
+
+  .container p.dark {
+    color: var(--dark-grayish-blue);
+  }
+
+  .container p.light {
+    color: var(--light-grayish-blue);
   }
 </style>
