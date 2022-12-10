@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form  @submit="handleNewTodoSubmit">
         <div id="input-field" :class="theme">
             <div class="check-mark">
                 <div class="circular-div" :class="theme"></div>
@@ -13,7 +13,15 @@
 <script>
     export default {
         name: 'TodoSearchBar',
-        props: ["theme"]
+        props: ["theme"],
+        methods: {
+            handleNewTodoSubmit(e){
+                e.preventDefault()
+                const formInput = e.target.querySelector('#new-todo') 
+                this.$emit('new-todo', formInput.value)
+                e.target.reset()
+            }
+        }
     }
 </script>
 

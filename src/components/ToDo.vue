@@ -2,7 +2,7 @@
     <div class="container">
         <div class="todo" :class="theme">
             <TodoHeader :theme="theme" @toggleTheme="$emit('toggleTheme')"/>
-            <TodoSearchBar :theme="theme"/>
+            <TodoSearchBar :theme="theme" @new-todo="onAdd"/>
             <div class="main-body" :class="[theme, mode]">
                 <TodoList
                     :theme="theme"
@@ -62,6 +62,12 @@
                 this.todoTasks = this.todoTasks.filter(task => {
                     return deletedTask.id != task.id
                 })
+            },
+            onAdd: function(newTodoName){
+                const newTodoId = this.todoTasks.reduce((a, b) => Math.max(a, b.id), -Infinity) + 1
+                const newTodoStatus = "active"
+
+                this.todoTasks = [...(this.todoTasks), {id: newTodoId, name: newTodoName, status: newTodoStatus}]
             },
             onMakeActive: function(activeItem){
                 this.updateColor(activeItem)
