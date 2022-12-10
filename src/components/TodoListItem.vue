@@ -127,4 +127,12 @@
     .completed {
         text-decoration: line-through;
     }
+
+    .dark.completed {
+        color: var(--very-dark-grayish-blue);
+    }
+
+    .light.completed {
+        color: var(--light-grayish-blue);
+    }
 </style>
