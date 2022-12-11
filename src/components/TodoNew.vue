@@ -41,6 +41,7 @@
         align-items: center;
         border-radius: 0.3rem;
         box-shadow: 0 0 1rem -0.5rem var(--very-dark-grayish-blue);
+        caret-color: hsl(192, 100%, 67%);
     }
 
     form input#new-todo {
