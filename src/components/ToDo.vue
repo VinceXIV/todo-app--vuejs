@@ -81,7 +81,7 @@
             },
             onClearCompleted: function(){
                 this.allTodoTasks = this.allTodoTasks.filter(task => task.status != "completed")
-                this.todoTasks = this.allTodoTasks
+                this.todoTasks = this.todoTasks.filter(task => task.status != "completed")
             },
             getNoOfActiveTodoTasks: function () {
                 const activeTodos = this.todoTasks.reduce((acc, task) => {
