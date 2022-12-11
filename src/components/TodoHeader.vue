@@ -1,6 +1,6 @@
 <template>
     <div id="todo-header" :class="theme">
-        <h1>To Do</h1>
+        <h1>T O D O</h1>
 
         <svg v-on:click="$emit('toggleTheme')" class="dark theme-icon" xmlns="http://www.w3.org/2000/svg" width="26" height="26">
             <path fill="#FFF" fill-rule="evenodd"
@@ -47,6 +47,7 @@
 #todo-header h1 {
     padding-top: 2rem;
     padding-bottom: 1.2rem;
+    font-weight: 900;
 }
 
 .theme-icon {

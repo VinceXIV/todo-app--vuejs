@@ -60,11 +60,12 @@ export default {
   --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
 
   /* TYPOGRAPHY  */
-  --font-size-set: 1rem;
-  --font-size-normal: 1rem;
+  --font-size-pick: 19px;
+  --font-size-set: 0.9rem;
   --font-size-small: 0.8rem;
-  --primary-font-family: 'Rubik', sans-serif;
-  --font-weight-light: 400;
+  /* --primary-font-family: 'Rubik', sans-serif;; */
+  --primary-font-family: 'Josefin Sans', sans-serif;
+  --font-weight-normal: 400;
   --font-weight-bold: 700;
 
 
@@ -76,7 +77,8 @@ export default {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-weight: var(--font-weight-light);
+  font-weight: var(--font-weight-normal);
   font-family: var(--primary-font-family);
+  font-stretch: ultra-condensed;
 }
 </style>

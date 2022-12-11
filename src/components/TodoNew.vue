@@ -56,9 +56,16 @@
     }
 
     .circular-div {
-        border: 0.1rem var(--very-dark-grayish-blue) solid;
         border-radius: 100%;
         padding: 0.4rem;
+    }
+
+    .circular-div.dark {
+        border: 0.1rem var(--very-dark-grayish-blue) solid;
+    }
+
+    .circular-div.light {
+        border: 0.1rem var(--light-grayish-blue) solid;
     }
 
     .check-mark {

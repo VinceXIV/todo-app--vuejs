@@ -1,6 +1,6 @@
 <template>
     <li 
-        :class="[theme, 'item']" class="todo-item">
+        :class="[theme, `${mode}-mode`]" class="todo-item item">
         <div class="check-mark">
             <div class="circular-div" :class="[theme, task.status]" @click="$emit('toggle-todo-state', task)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9" :class="task.status">
@@ -97,8 +97,25 @@
         display: none;
     }
 
-    .circular-div:hover{
+    .mobile-mode .cross svg.active {
+        display: block;
+    }
+
+    .desktop-mode:hover .circular-div {
         border-color: var(--check-background);
+    }
+
+    .desktop-mode:hover .cross svg.active{
+        display: block;
+    }
+
+    .circular-div.completed {
+        border: none;
+    }
+
+    .desktop-mode .cross svg.completed {
+        display: none;
+        background-color: red;
     }
 
     .cross {
