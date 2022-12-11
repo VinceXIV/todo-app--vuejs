@@ -30,7 +30,7 @@
                 this.$emit('mark-completed', todoTask)
             },
             onRemoveTodoItem: function(deletedTask){
-                if(this.mode == 'mobile'){
+                if(this.mode == 'mobile' || deletedTask.status == 'active'){
                     this.$emit('delete-task', deletedTask)
                 }
             }
