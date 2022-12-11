@@ -44,8 +44,7 @@
         TodoSummaryAndFunctionalities,
         FilterTodosMobileView
     },
-
-
+    
     props: {
         theme: String,
         mode: String
