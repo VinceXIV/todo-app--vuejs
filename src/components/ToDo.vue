@@ -68,7 +68,10 @@
                 })
             },
             onAdd: function(newTodoName){
-                const newTodoId = this.todoTasks.reduce((a, b) => Math.max(a, b.id), -Infinity) + 1
+                let newTodoId = 0
+                if(this.todoTasks.length){
+                    newTodoId = this.todoTasks.reduce((a, b) => Math.max(a, b.id), -Infinity) + 1
+                }
                 const newTodoStatus = "active"
 
                 this.todoTasks = [...(this.todoTasks), {id: newTodoId, name: newTodoName, status: newTodoStatus}]
@@ -81,7 +84,7 @@
             },
             onClearCompleted: function(){
                 this.allTodoTasks = this.allTodoTasks.filter(task => task.status != "completed")
-                this.todoTasks = this.allTodoTasks
+                this.todoTasks = this.todoTasks.filter(task => task.status != "completed")
             },
             getNoOfActiveTodoTasks: function () {
                 const activeTodos = this.todoTasks.reduce((acc, task) => {
