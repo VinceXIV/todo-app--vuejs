@@ -17,7 +17,7 @@ export default {
   data(){
     return {
       theme: 'dark',
-      mode: this.getMode()
+      mode: 'desktop'
     }
   },
   mounted() {
