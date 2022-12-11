@@ -13,7 +13,9 @@
 <script>
     export default {
         name: 'TodoSearchBar',
+
         props: ["theme"],
+        
         methods: {
             handleNewTodoSubmit(e){
                 e.preventDefault()

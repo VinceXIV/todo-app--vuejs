@@ -9,6 +9,7 @@ import ToDo from './components/ToDo.vue';
 
 export default {
   name: 'App',
+  
   components: {
     BackGround,
     ToDo
@@ -20,10 +21,12 @@ export default {
       mode: 'desktop'
     }
   },
+
   mounted() {
     window.addEventListener('DOMContentLoaded', this.getMode)
     window.addEventListener('resize', this.getMode);
   },
+
   unmounted() {
     window.removeEventListener('resize', this.getMode);
     window.removeEventListener('DOMContentLoaded', this.getMode)

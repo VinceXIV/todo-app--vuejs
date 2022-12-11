@@ -17,14 +17,17 @@
     import TodoListItem from './TodoListItem.vue';
     export default {
         name: 'TodoList',
+
         props: {
             todoTasks: Object,
             theme: String,
             mode: String
         },
+
         components: {
             TodoListItem
         },
+
         methods: {
             onToggleTodoState: function(todoTask){
                 this.$emit('mark-completed', todoTask)
@@ -35,6 +38,7 @@
                 }
             }
         },
+        
         emits: ['mark-completed', 'delete-task']    
     }
 </script>

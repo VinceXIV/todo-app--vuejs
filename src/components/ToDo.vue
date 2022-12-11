@@ -34,117 +34,136 @@
     import TodoSummaryAndFunctionalities from './TodoSummaryAndFunctionalities.vue';
     import FilterTodosMobileView from './FilterTodosMobileView.vue';
 
+
     export default {
         name: 'ToDo',
         components: {
-    TodoHeader,
-    TodoNew,
-    TodoList,
-    TodoSummaryAndFunctionalities,
-    FilterTodosMobileView
-},
-        props: {
-            theme: String,
-            mode: String
-        },
-        methods: {
-            onCompleted: function (todoTask) {
-                this.todoTasks = this.todoTasks.map(task => {
-                    if (task.id == todoTask.id) {
-                        const newStatus = task.status == "active" ? "completed" : "active"
-                        this.allTodoTasks.find(aTask => aTask.id == task.id).status = newStatus
-                        task.status = newStatus
-                    }
-                    return task;
-                })
-                this.remainingItems = this.getNoOfActiveTodoTasks()
-            },
-            onDelete: function (deletedTask) {
-                this.todoTasks = this.todoTasks.filter(task => {
-                    return deletedTask.id != task.id
-                })
-                this.allTodoTasks = this.allTodoTasks.filter(task => {
-                    return deletedTask.id != task.id
-                })
-            },
-            onAdd: function(newTodoName){
-                let newTodoId = 0
-                if(this.todoTasks.length){
-                    newTodoId = this.todoTasks.reduce((a, b) => Math.max(a, b.id), -Infinity) + 1
-                }
-                const newTodoStatus = "active"
+        TodoHeader,
+        TodoNew,
+        TodoList,
+        TodoSummaryAndFunctionalities,
+        FilterTodosMobileView
+    },
 
-                this.todoTasks = [...(this.todoTasks), {id: newTodoId, name: newTodoName, status: newTodoStatus}]
-                this.allTodoTasks = [...(this.allTodoTasks), { id: newTodoId, name: newTodoName, status: newTodoStatus }]
-                this.remainingItems = this.getNoOfActiveTodoTasks()
-            },
-            onMakeActive: function(activeItem){
-                this.updateColor(activeItem)
-                this.updateDisplayedItems(activeItem)
-            },
-            onClearCompleted: function(){
-                this.allTodoTasks = this.allTodoTasks.filter(task => task.status != "completed")
-                this.todoTasks = this.todoTasks.filter(task => task.status != "completed")
-            },
-            getNoOfActiveTodoTasks: function () {
-                const activeTodos = this.todoTasks.reduce((acc, task) => {
-                    if (task.status == "active") {
-                        acc += 1
-                        return acc;
-                    } else {
-                        return acc;
-                    }
-                }, 0)
 
-                return activeTodos;
-            },
-            updateColor: function(activeItem){
-                this.currentlyShowing = {
-                    all: activeItem == "all" ? "active" : "inactive",
-                    active: activeItem == "active" ? "active" : "inactive",
-                    completed: activeItem == "completed" ? "active" : "inactive"
-                }                
-            },
-            updateDisplayedItems: function(activeItem){
-                if(activeItem == "all"){
-                    this.todoTasks = this.allTodoTasks
-                }else if (activeItem == "active"){
-                    this.todoTasks = this.allTodoTasks.filter(task => task.status == "active")
-                } else if (activeItem == "completed") {
-                    this.todoTasks = this.allTodoTasks.filter(task => task.status == "completed")
+    props: {
+        theme: String,
+        mode: String
+    },
+    
+
+    methods: {
+        onCompleted: function (todoTask) {
+            this.todoTasks = this.todoTasks.map(task => {
+                if (task.id == todoTask.id) {
+                    const newStatus = task.status == "active" ? "completed" : "active"
+                    this.allTodoTasks.find(aTask => aTask.id == task.id).status = newStatus
+                    task.status = newStatus
                 }
-            }
-        },
-        data(){
-            return {
-                allTodoTasks: [
-                    { id: 1, name: "Complete online javascript course", status: "completed" },
-                    { id: 2, name: "Jog around the park 3x", status: "active" },
-                    { id: 3, name: "10 minutes meditation", status: "active" },
-                    { id: 4, name: "Read for 1 hour", status: "active" },
-                    { id: 5, name: "Pick up groceries", status: "active" },
-                    { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
-                ],                
-                todoTasks: [
-                    { id: 1, name: "Complete online javascript course", status: "completed" },
-                    { id: 2, name: "Jog around the park 3x", status: "active" },
-                    { id: 3, name: "10 minutes meditation", status: "active" },
-                    { id: 4, name: "Read for 1 hour", status: "active" },
-                    { id: 5, name: "Pick up groceries", status: "active" },
-                    { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
-                ],
-                remainingItems: 0,
-                currentlyShowing: {
-                    all: "active",
-                    active: "inactive",
-                    completed: "inactive"
-                }
-            }
-        },
-        created(){
+                return task;
+            })
             this.remainingItems = this.getNoOfActiveTodoTasks()
+        },
+
+        onDelete: function (deletedTask) {
+            this.todoTasks = this.todoTasks.filter(task => {
+                return deletedTask.id != task.id
+            })
+            this.allTodoTasks = this.allTodoTasks.filter(task => {
+                return deletedTask.id != task.id
+            })
+        },
+
+        onAdd: function(newTodoName){
+            let newTodoId = 0
+            if(this.todoTasks.length){
+                newTodoId = this.todoTasks.reduce((a, b) => Math.max(a, b.id), -Infinity) + 1
+            }
+            const newTodoStatus = "active"
+
+            this.todoTasks = [...(this.todoTasks), {id: newTodoId, name: newTodoName, status: newTodoStatus}]
+            this.allTodoTasks = [...(this.allTodoTasks), { id: newTodoId, name: newTodoName, status: newTodoStatus }]
+            this.remainingItems = this.getNoOfActiveTodoTasks()
+        },
+
+        onMakeActive: function(activeItem){
+            this.updateColor(activeItem)
+            this.updateDisplayedItems(activeItem)
+        },
+
+        onClearCompleted: function(){
+            this.allTodoTasks = this.allTodoTasks.filter(task => task.status != "completed")
+            this.todoTasks = this.todoTasks.filter(task => task.status != "completed")
+        },
+
+        getNoOfActiveTodoTasks: function () {
+            const activeTodos = this.todoTasks.reduce((acc, task) => {
+                if (task.status == "active") {
+                    acc += 1
+                    return acc;
+                } else {
+                    return acc;
+                }
+            }, 0)
+
+            return activeTodos;
+        },
+
+        updateColor: function(activeItem){
+            this.currentlyShowing = {
+                all: activeItem == "all" ? "active" : "inactive",
+                active: activeItem == "active" ? "active" : "inactive",
+                completed: activeItem == "completed" ? "active" : "inactive"
+            }                
+        },
+
+        updateDisplayedItems: function(activeItem){
+            if(activeItem == "all"){
+                this.todoTasks = this.allTodoTasks
+            }else if (activeItem == "active"){
+                this.todoTasks = this.allTodoTasks.filter(task => task.status == "active")
+            } else if (activeItem == "completed") {
+                this.todoTasks = this.allTodoTasks.filter(task => task.status == "completed")
+            }
         }
+    },
+
+
+    data(){
+        return {
+            allTodoTasks: [
+                { id: 1, name: "Complete online javascript course", status: "completed" },
+                { id: 2, name: "Jog around the park 3x", status: "active" },
+                { id: 3, name: "10 minutes meditation", status: "active" },
+                { id: 4, name: "Read for 1 hour", status: "active" },
+                { id: 5, name: "Pick up groceries", status: "active" },
+                { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
+            ],   
+
+            todoTasks: [
+                { id: 1, name: "Complete online javascript course", status: "completed" },
+                { id: 2, name: "Jog around the park 3x", status: "active" },
+                { id: 3, name: "10 minutes meditation", status: "active" },
+                { id: 4, name: "Read for 1 hour", status: "active" },
+                { id: 5, name: "Pick up groceries", status: "active" },
+                { id: 6, name: "Complete Todo App on Frontend Mentor", status: "active" }
+            ],
+
+            remainingItems: 0,
+
+            currentlyShowing: {
+                all: "active",
+                active: "inactive",
+                completed: "inactive"
+            }
+        }
+    },
+
+
+    created(){
+        this.remainingItems = this.getNoOfActiveTodoTasks()
     }
+}
 </script>
 
 <style scoped>

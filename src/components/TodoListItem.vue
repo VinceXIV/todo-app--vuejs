@@ -23,11 +23,13 @@
 <script>
     export default {
         name: 'TodoListItem',
+
         props: {
             theme: String,
             mode: String,
             task: Object
         },
+        
         emits: ['toggle-todo-state', 'remove-todo-item']
     }
 </script>
