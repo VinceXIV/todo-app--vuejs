@@ -2,7 +2,7 @@
     <div class="container">
         <div class="todo" :class="theme">
             <TodoHeader :theme="theme" @toggleTheme="$emit('toggleTheme')"/>
-            <TodoSearchBar :theme="theme" @new-todo="onAdd"/>
+            <TodoNew :theme="theme" @new-todo="onAdd"/>
             <div class="main-body" :class="[theme, mode]">
                 <TodoList
                     :theme="theme"
@@ -29,7 +29,7 @@
 
 <script>
     import TodoHeader from './TodoHeader.vue';
-    import TodoSearchBar from './TodoSearchBar.vue';
+    import TodoNew from './TodoNew.vue';
     import TodoList from './TodoList.vue';
     import TodoSummaryAndFunctionalities from './TodoSummaryAndFunctionalities.vue';
     import FilterTodosMobileView from './FilterTodosMobileView.vue';
@@ -38,7 +38,7 @@
         name: 'ToDo',
         components: {
     TodoHeader,
-    TodoSearchBar,
+    TodoNew,
     TodoList,
     TodoSummaryAndFunctionalities,
     FilterTodosMobileView
