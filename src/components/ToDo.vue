@@ -71,6 +71,7 @@
             this.allTodoTasks = this.allTodoTasks.filter(task => {
                 return deletedTask.id != task.id
             })
+            this.remainingItems = this.getNoOfActiveTodoTasks()
         },
 
         onAdd: function(newTodoName){
