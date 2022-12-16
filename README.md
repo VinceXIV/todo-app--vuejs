@@ -1,7 +1,7 @@
 # Todo App Using VueJs
 
 ## Description
-This is a todo app using VueJs and JavaScript. Find the deployed link [here](). Also, here is the video demonstration on what you can do with the app. The todo app has the following functionalities;
+This is a todo app using VueJs and JavaScript. Find the deployed link [here](https://spiffy-sorbet-71334a.netlify.app/). Also, [here is the video demonstration](https://drive.google.com/file/d/156vfwpnJDs-ZAC0xgPMu9pfEP6RXUlzE/view?usp=sharing) on what you can do with the app. The todo app has the following functionalities;
 1. A user can add new todos
 2. A user can mark certain todos as completed
 3. One can filter todos based on whether they have been completed or not completed. Also, one can simply view all todos regardless of whether they have been completed or not
@@ -18,7 +18,7 @@ VueJs
 
 ## Running the Project Locally on Your Machine
 ### Setup Requirements
-You can experience the app by visiting the link [here](). Alternatively (and especially if you want to modify implementations), you can clone the repo and work on it locally. Before you do that, ensure you have the following installed;
+You can experience the app by visiting the link [here](https://spiffy-sorbet-71334a.netlify.app/). Alternatively (and especially if you want to modify implementations), you can clone the repo and work on it locally. Before you do that, ensure you have the following installed;
 1. npm
 2. vue-3
 
